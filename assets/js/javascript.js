@@ -38,3 +38,13 @@ let apiKey = "3ac0d8db34de82819d13a9167239acc1";
 let searchBtn = $(".searchBtn");
 let searchInput = $(".searchInput");
 
+// Adding new items for previously searched cities
+function renderSearchHistory(cityName) {
+  searchHistoryEl.empty();
+  let searchHistoryArr = JSON.parse(localStorage.getItem("searchHistory"));
+  for (let i = 0; i < searchHistoryArr.length; i++) {
+      let newListItem = $("<li>").attr("class", "historyEntry");
+      newListItem.text(searchHistoryArr[i]);
+      searchHistoryEl.prepend(newListItem);
+  }
+}
