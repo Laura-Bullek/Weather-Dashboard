@@ -12,3 +12,29 @@
 // an icon representation of weather conditions, the temperature, the wind speed, and the humidity
 // WHEN I click on a city in the search history
 // THEN I am again presented with current and future conditions for that city
+
+// Linking city, weather, date and history to the DOM
+let cityNameEl = $(".cityName");
+let currentDateEl = $(".currentDate");
+let weatherIconEl = $(".weatherIcon");
+let searchHistoryEl = $(".historyItems");
+
+// Weather variables 
+let tempEl = $(".temp");
+let humidityEl = $(".humidity");
+let windSpeedEl = $(".windSpeed");
+let uvIndexEl = $(".uvIndex");
+let cardRow = $(".card-row");
+
+// Date varible 
+var today = new Date();
+let dd = String(today.getDate()).padStart(2, '0');
+let mm = String(today.getMonth() + 1).padStart(2, '0');
+let yyyy = today.getFullYear();
+var today = mm + '/' + dd + '/' + yyyy;
+
+// APIs
+let apiKey = "3ac0d8db34de82819d13a9167239acc1";
+let searchBtn = $(".searchBtn");
+let searchInput = $(".searchInput");
+
