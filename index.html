@@ -13,7 +13,32 @@
     <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 <body>
- 
+  <header class="header">
+    <h1>Weather Dashboard</h1>
+  </header>
+
+  <!--Search bar-->
+  <div class="container">
+    <div class="search">
+        <div class="row">
+            <h1>Search for a City:</h1>
+        </div>
+        <div class="row">
+            <input type="text" class="searchInput" placeholder="Your City">
+            <button type="submit" class="searchBtn">
+            <i class="fas fa-search"></i>
+            </button>
+        </div>
+        <div class="historyItems"></div>
+    </div>
+
+    <div class="col-two-container">
+        <div class="forecast">
+            <div class="row">
+                <h1 class="cityName">City Name</h1>
+                <h1 class="currentDate"></h1>
+                <img class="weatherIcon"></img>
+            </div>
 
     
 </body>
