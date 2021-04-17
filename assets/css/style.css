@@ -44,3 +44,12 @@ button:hover {
 button:focus {
   border: none;
 }
+
+.search {
+  padding: 25px;
+  background-color: #f5f6fa;
+}
+
+.search h1 {
+  line-height: 30px;
+}
