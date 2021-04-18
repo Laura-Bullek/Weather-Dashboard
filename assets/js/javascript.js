@@ -13,24 +13,25 @@
 // WHEN I click on a city in the search history
 // THEN I am again presented with current and future conditions for that city
 
-//date varible 
+// Current date varible 
 var today = new Date();
 let dd = String(today.getDate()).padStart(2, '0');
 let mm = String(today.getMonth() + 1).padStart(2, '0');
 let yyyy = today.getFullYear();
 var today = mm + '/' + dd + '/' + yyyy;
 
-//Api
+// Api information to the DOM
 let apiKey = "3ac0d8db34de82819d13a9167239acc1";
 let searchBtn = $(".searchBtn");
 let searchInput = $(".searchInput");
 
-//City, weather, date and history variable 
+// Linking city, weather, date and history to the DOM
 let cityNameEl = $(".cityName");
 let currentDateEl = $(".currentDate");
 let weatherIconEl = $(".weatherIcon");
 let searchHistoryEl = $(".historyItems");
-// weather variables 
+
+// Linking weather variables to the DOM 
 let tempEl = $(".temp");
 let humidityEl = $(".humidity");
 let windSpeedEl = $(".windSpeed");
@@ -43,18 +44,18 @@ if (JSON.parse(localStorage.getItem("searchHistory")) === null) {
     console.log("searchHistory loaded into searchHistoryArr");
     renderSearchHistory();
 }
+
 searchBtn.on("click", function(e) {
     e.preventDefault();
     if (searchInput.val() === "") {
         alert("You must enter a city");
         return;
     }
-    console.log("clicked button")
     getWeather(searchInput.val());
 });
 
+
 $(document).on("click", ".historyEntry", function() {
-    console.log("clicked history item")
     let thisElement = $(this);
     getWeather(thisElement.text());
 })
@@ -77,6 +78,8 @@ function renderWeatherData(cityName, cityTemp, cityHumidity, cityWindSpeed, city
     uvIndexEl.text(`UV Index: ${uvVal}`);
     weatherIconEl.attr("src", cityWeatherIcon);
 }
+
+// Retrieves weather information from search input
 function getWeather(desiredCity) {
     let queryUrl = `https://api.openweathermap.org/data/2.5/weather?q=${desiredCity}&APPID=${apiKey}&units=imperial`;
     $.ajax({
@@ -115,7 +118,8 @@ function getWeather(desiredCity) {
             }
         }else{
             let searchHistoryArr = JSON.parse(localStorage.getItem("searchHistory"));
-        //store and save search array 
+
+            // Stores and saves search array 
             if (searchHistoryArr.indexOf(cityObj.cityName) === -1) {
                 searchHistoryArr.push(cityObj.cityName);
                 
@@ -129,12 +133,12 @@ function getWeather(desiredCity) {
                 renderWeatherData(cityObj.cityName, cityObj.cityTemp, cityObj.cityHumidity, cityObj.cityWindSpeed, renderedWeatherIcon, uvData.value);
             }
         }
-    })
-        
+    })  
     });
     
     getFiveDayForecast();
 
+    // Retrieving the five day forecast
     function getFiveDayForecast() {
         cardRow.empty();
         let queryUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${desiredCity}&APPID=${apiKey}&units=imperial`;
@@ -159,6 +163,7 @@ function getWeather(desiredCity) {
     }   
 }
 
+// Creating the cards for each of the 5-day forecast
 function createForecastCard(date, icon, temp, humidity) {
 
     // Weather forecast data
