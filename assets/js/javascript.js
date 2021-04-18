@@ -167,3 +167,12 @@ function createForecastCard(date, icon, temp, humidity) {
     let cardIcon = $("<img>").attr("class", "weatherIcon");
     let cardTemp = $("<p>").attr("class", "card-text");
     let cardHumidity = $("<p>").attr("class", "card-text");
+
+    // Applying forecast data
+    cardRow.append(fiveDayCardEl);
+    cardDate.text(date);
+    cardIcon.attr("src", icon);
+    cardTemp.text(`Temp: ${temp} °F`);
+    cardHumidity.text(`Humidity: ${humidity}%`);
+    fiveDayCardEl.append(cardDate, cardIcon, cardTemp, cardHumidity);
+}
