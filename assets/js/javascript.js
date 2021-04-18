@@ -143,7 +143,7 @@ function getWeather(desiredCity) {
             method: "GET"
         })
         .then(function(fiveDayReponse) {
-            for (let i = 0; i != fiveDayReponse.length; i+=8 ) {
+            for (let i = 0; i != fiveDayReponse.list.length; i+=8 ) {
                 let cityObj = {
                     date: fiveDayReponse.list[i].dt_txt,
                     icon: fiveDayReponse.list[i].weather[0].icon,
@@ -158,3 +158,12 @@ function getWeather(desiredCity) {
         })
     }   
 }
+
+function createForecastCard(date, icon, temp, humidity) {
+
+    // Weather forecast data
+    let fiveDayCardEl = $("<div>").attr("class", "five-day-card");
+    let cardDate = $("<h3>").attr("class", "card-text");
+    let cardIcon = $("<img>").attr("class", "weatherIcon");
+    let cardTemp = $("<p>").attr("class", "card-text");
+    let cardHumidity = $("<p>").attr("class", "card-text");
