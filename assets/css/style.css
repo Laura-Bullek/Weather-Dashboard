@@ -2,6 +2,7 @@ body {
   font-family: sans-serif;
   height: 100%;
   margin: 0;
+  font-family: Verdana, Geneva, Tahoma, sans-serif  ;
 }
 
 html {
@@ -15,7 +16,8 @@ header {
   margin-top: 0;
   text-align: center;
   font-size: xx-large;
-  background-color: #2f3640;
+  background-image: url(../images/Clouds-Blue-Sky.jpg);
+  animation: animatedBackground 40s linear infinite;
 }
 
 .container {
@@ -58,7 +60,7 @@ button:focus {
 
 .search {
   padding: 25px;
-  background-color: #f5f6fa;
+  background-color: #c3c6d3;
 }
 
 .search h1 {
@@ -154,4 +156,14 @@ li:last-child {
 
 .row * {
   margin-right: 5px;
+}
+
+.forecast {
+  padding-left: 20px;
+}
+
+/* Animation for background image */
+@keyframes animatedBackground {
+  from { background-position: 0 0; }
+  to { background-position: 100% 0; }
 }
