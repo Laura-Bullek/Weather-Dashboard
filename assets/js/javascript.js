@@ -143,7 +143,7 @@ function getWeather(desiredCity) {
             method: "GET"
         })
         .then(function(fiveDayReponse) {
-            for (let i = 0; i != fiveDayReponse.list.length; i+=8 ) {
+            for (let i = 0; i != fiveDayReponse.length; i+=8 ) {
                 let cityObj = {
                     date: fiveDayReponse.list[i].dt_txt,
                     icon: fiveDayReponse.list[i].weather[0].icon,
